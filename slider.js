@@ -223,7 +223,7 @@ Sim.initialize = function (that) {
                 that.elemPrev()
             }
         }
-        if (evt.keyCode == 39) {
+        if (evt.keyCode == 39 || evt.keyCode == 124) {
 
             let fnTime = getTime();
             if (fnTime - bgTime > 1000) {
