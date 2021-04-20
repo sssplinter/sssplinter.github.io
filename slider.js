@@ -2,22 +2,21 @@ function Sim(sldrId) {
 
     let id = document.getElementById(sldrId);
     if (id) {
-        this.sldrRoot = id
+        this.sldrRoot = id;
     } else {
-        this.sldrRoot = document.querySelector('.sim-slider')
+        this.sldrRoot = document.querySelector('.sim-slider');
     }
 
     // Carousel objects
     this.sldrList = this.sldrRoot.querySelector('.sim-slider-list');
     this.sldrElements = this.sldrList.querySelectorAll('.sim-slider-element');
-    this.sldrElemFirst = this.sldrList.querySelector('.sim-slider-element');
     this.leftArrow = this.sldrRoot.querySelector('div.sim-slider-arrow-left');
     this.rightArrow = this.sldrRoot.querySelector('div.sim-slider-arrow-right');
     this.indicatorDots = this.sldrRoot.querySelector('div.sim-slider-dots');
     this.autoplayButton = this.sldrRoot.querySelector('button.sim-slider-autoplay-btn');
 
     this.options = Sim.defaults;
-    Sim.initialize(this)
+    Sim.initialize(this);
 }
 
 Sim.defaults = {
@@ -213,10 +212,8 @@ Sim.initialize = function (that) {
         evt = evt || window.event;
         if (evt.keyCode == 27 ) {
             window.close();
-            // alert('Esc key pressed.');
         }
         if (evt.keyCode == 37 || evt.keyCode == 123) {
-            // alert('back.');
             let fnTime = getTime();
             if (fnTime - bgTime > 1000) {
                 bgTime = fnTime;
