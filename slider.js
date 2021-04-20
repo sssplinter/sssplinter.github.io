@@ -104,7 +104,7 @@ Sim.initialize = function (that) {
         that.autoplayButton.innerText = 'Start';
     }
 
-    if(localStorage.getItem('currentElement') !== null){
+    if (localStorage.getItem('currentElement') !== null) {
         that.currentElement = JSON.parse(localStorage.getItem("currentElement"));
     } else {
         that.currentElement = 0;
@@ -209,30 +209,29 @@ Sim.initialize = function (that) {
         }
     }
 
-    document.addEventListener('keydown', function (event) {
-        //keyCode устарел, но key не поддерживается браузером
-        switch (event.keyCode) {
-            case 37 : {
-                let fnTime = getTime();
-                if (fnTime - bgTime > 1000) {
-                    bgTime = fnTime;
-                    that.elemPrev()
-                }
-                break
-            }
-            case 39: {
-                let fnTime = getTime();
-                if (fnTime - bgTime > 1000) {
-                    bgTime = fnTime;
-                    that.elemNext()
-                }
-                break
-            }
-            case 27: {
-                window.close();
+    document.onkeydown = function (evt) {
+        evt = evt || window.event;
+        if (evt.keyCode == 27 ) {
+            window.close();
+            // alert('Esc key pressed.');
+        }
+        if (evt.keyCode == 37 || evt.keyCode == 123) {
+            // alert('back.');
+            let fnTime = getTime();
+            if (fnTime - bgTime > 1000) {
+                bgTime = fnTime;
+                that.elemPrev()
             }
         }
-    });
+        if (evt.keyCode == 39) {
+
+            let fnTime = getTime();
+            if (fnTime - bgTime > 1000) {
+                bgTime = fnTime;
+                that.elemNext()
+            }
+        }
+    };
 };
 
 new Sim();
